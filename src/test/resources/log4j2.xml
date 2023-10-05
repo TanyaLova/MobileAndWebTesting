@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} [%t] [%p] %c{1} - %m%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+                    //pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable" />
+        </Console>
+<!--        <Log4j2Appender name="MyAppender">-->
+<!--            <PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable"/>-->
+<!--        </Log4j2Appender>-->
+        <File name="MyFile" fileName="target/all.log" immediateFlush="false" append="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="MyFile"/>
+<!--            <AppenderRef ref="MyAppender"/>-->
+        </Root>
+<!--        <Logger name="com.reportportal" level="INFO" additivity="false">-->
+<!--            <AppenderRef ref="ConsoleAppender"/>-->
+<!--            <AppenderRef ref="MyAppender"/>-->
+<!--        </Logger>-->
+<!--        <Logger name="binary_data_logger" level="DEBUG" additivity="false">-->
+<!--            <AppenderRef ref="MyAppender"/>-->
+<!--        </Logger>-->
+    </Loggers>
+</Configuration>
